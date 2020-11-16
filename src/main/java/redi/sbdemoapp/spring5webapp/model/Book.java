@@ -1,6 +1,7 @@
 package redi.sbdemoapp.spring5webapp.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,15 +16,15 @@ public class Book {
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors;
+    private Set<Author> authors = new HashSet<>();
 
     public Book() {
     }
 
-    public Book(String title, String ison, Set<Author> authors) {
+    public Book(String title, String ison) {
         this.title = title;
         this.ison = ison;
-        this.authors = authors;
+        //this.authors = authors;
     }
 
     public Long getId() {
